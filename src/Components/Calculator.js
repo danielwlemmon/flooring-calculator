@@ -19,36 +19,38 @@ function Calculator() {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value + e.target.name)
     setPlankDimensions((preValue) => {
-      return {...preValue, [e.target.name]: e.target.value};
+      return { ...preValue, [e.target.name]: e.target.value };
     });
   };
 
-  return(
+  return (
     <div>
-      <h2>Set floor plank dimensions</h2>
-      <label name="plankWidth">Plank Width</label>
-      <input onChange = {handleChange}
-      type="number"
-      name="width"
-      placeholder="7.75"
-      />
-       units
-      <br/>
-      <label name="plankLength">Plank Length</label>
-      <input onChange = {handleChange}
-      type="number"
-      name="length"
-      placeholder="48.5"
-      />
-       units
-      <br/>
-      <h2>Starting point adjustment</h2>
-      <button onClick={decreaseStart}>-</button>
-      {offset.toFixed(2)} units
-      <button onClick={increaseStart}>+</button>
-      <Measurements />
+      <div className='dimensions-input'>
+        <h2>Set floor plank dimensions</h2>
+        <label name="plankWidth">Plank Width </label>
+        <input onChange={handleChange}
+          type="number"
+          name="width"
+          placeholder="7.75 - shorter side"
+        />
+        units
+        <br />
+        <label name="plankLength">Plank Length </label>
+        <input onChange={handleChange}
+          type="number"
+          name="length"
+          placeholder="48.5 - longer side"
+        />
+        units
+      </div>
+      <div>
+        <h2>Starting point adjustment</h2>
+        <button onClick={decreaseStart}>-</button>
+        {offset.toFixed(2)} units
+        <button onClick={increaseStart}>+</button>
+      </div>
+      <Measurements plankDimensions={{...plankDimensions, offset}} />
     </div>
   )
 };
