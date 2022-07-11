@@ -32,6 +32,7 @@ function Calculator() {
       <input onChange = {handleChange}
       type="number"
       name="width"
+      placeholder="7.75"
       />
        units
       <br/>
@@ -39,6 +40,7 @@ function Calculator() {
       <input onChange = {handleChange}
       type="number"
       name="length"
+      placeholder="48.5"
       />
        units
       <br/>
