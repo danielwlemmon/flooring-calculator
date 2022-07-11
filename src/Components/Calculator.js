@@ -4,8 +4,8 @@ import Measurements from './Measurements';
 function Calculator() {
   const [offset, setOffset] = useState(0);
   const [plankDimensions, setPlankDimensions] = useState({
-    width: 0,
-    length: 0
+    width: null,
+    length: null
   });
 
   const increaseStart = () => {
