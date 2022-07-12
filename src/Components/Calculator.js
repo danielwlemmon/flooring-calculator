@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import Measurements from './Measurements';
+import CalculatorContext from '../Services/CalculatorContext';
 
 function Calculator() {
+  const context = useContext(CalculatorContext);
   const [offset, setOffset] = useState(0);
   const [plankDimensions, setPlankDimensions] = useState({
     width: null,
@@ -22,6 +24,7 @@ function Calculator() {
     setPlankDimensions((preValue) => {
       return { ...preValue, [e.target.name]: e.target.value };
     });
+    
   };
 
   return (
