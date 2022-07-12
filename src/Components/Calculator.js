@@ -1,9 +1,7 @@
 import React, { useCallback, useContext, useState } from 'react';
 import Measurements from './Measurements';
-import CalculatorContext from '../Services/CalculatorContext';
 
 function Calculator() {
-  const context = useContext(CalculatorContext);
   const [offset, setOffset] = useState(0);
   const [plankDimensions, setPlankDimensions] = useState({
     width: null,
