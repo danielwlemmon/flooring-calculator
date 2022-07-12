@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.footer {
+  border: 1px black solid;
+}
+
 .measurement {
   border:1px black solid;
 }
