@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Measurements = ({ plankDimensions }) => {
   const [measurements, setMeasurements] = useState([]);
@@ -7,12 +7,17 @@ const Measurements = ({ plankDimensions }) => {
     name: "",
     measurement: null
   });
+  const [refresh, setRefresh] = useState(0);
+
+  useEffect(() => {
+
+  },[refresh]);
 
   const calcLastWidth = (m) => {
     const distance = parseFloat(m);
     const planksNeeded = ((distance + plankDimensions.offset) / plankDimensions.width).toFixed(2);
     const percentWidth = ((planksNeeded - Math.trunc(planksNeeded)) * 100).toFixed(1);
-    
+
     return (
       <p># of planks to endpoint = {planksNeeded},
         and the last plank will be {percentWidth}% of a full plank</p>);
@@ -20,11 +25,12 @@ const Measurements = ({ plankDimensions }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     let addMeasurements = measurements;
     addMeasurements.push(newMeasurement);
     setMeasurements(addMeasurements);
-    console.log(measurements)
+    setRefresh(refresh+1);
+    //document.querySelector("new-measurement").reset();
   };
 
   const handleChange = (e) => {
@@ -39,10 +45,10 @@ const Measurements = ({ plankDimensions }) => {
       {measurements.map((m, index) => (
         <div key={index}>
           {m.name}{calcLastWidth(m.measurement)}
-          <br/><br/>
+          <br />
         </div>
       ))}
-      <form onSubmit={handleSubmit}>
+      <form name="new-measurement" onSubmit={handleSubmit}>
         <label htmlFor='name'>Name of measurement </label>
 
         <input placeholder='wall etc' type="text" name='name' onChange={handleChange} />
