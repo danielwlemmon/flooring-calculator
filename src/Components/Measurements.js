@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import getLastWidth from './GetLastWidth';
 
 const Measurements = ({ plankDimensions }) => {
   const [measurements, setMeasurements] = useState([]);
@@ -12,28 +13,6 @@ const Measurements = ({ plankDimensions }) => {
   useEffect(() => {
 
   }, [refresh]);
-
-  const calcLastWidth = (m) => {
-    const distance = parseFloat(m.measurement);
-    const planksNeeded = ((distance + plankDimensions.offset) / plankDimensions.width).toFixed(2);
-    const lastWidthPercent = ((planksNeeded - Math.trunc(planksNeeded)) * 100).toFixed(1);
-    const lastWidth = (plankDimensions.width * (lastWidthPercent / 100)).toFixed(4);
-    const wrapWidthPercent = (100 - lastWidthPercent);
-    const wrapWidth = (plankDimensions.width - lastWidth).toFixed(4);
-    if (m.wrap) {
-      return (
-        <div >
-          <p>There will be {planksNeeded} rows from the starting point to the {m.name}, Width of board after measurement: {wrapWidth} units or {wrapWidthPercent}% of a plank</p>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <p>There will be {planksNeeded} rows from the starting point to the {m.name}, Width of final board: {lastWidth} units or {lastWidthPercent}% of a plank</p>
-        </div>
-      );
-    }
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,7 +34,7 @@ const Measurements = ({ plankDimensions }) => {
     <div>
       {measurements.map((m, index) => (
         <div className='measurement' key={index}>
-          {calcLastWidth(m)}
+          {getLastWidth(m, plankDimensions)}
         </div>
       ))}
       <form className='forms' onSubmit={handleSubmit}>
