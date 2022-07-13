@@ -32,26 +32,43 @@ const Measurements = ({ plankDimensions }) => {
 
   return (
     <div>
-      {measurements.map((m, index) => (
-        <div className='measurement' key={index}>
-          {getLastWidth(m, plankDimensions)}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-12 '>
+            {measurements.map((m, index) => (
+              <div key={index}>
+                {getLastWidth(m, plankDimensions)}
+              </div>
+            ))}
+          </div>
+          <div className='col-sm-12 col-md-6'>
+            <form onSubmit={handleSubmit}>
+              <div className=''>
+                <label className='for-label'>Name of measurement </label>
+                <input className='form-control' placeholder='wall etc' type="text" name='name' onChange={handleChange} />
+              </div>
+              <div className=''>
+                <label className='for-label' htmlFor='measurement'>Measurement </label>
+                <input className='form-control' step='0.0001' placeholder='151.5' type='number' name='measurement' onChange={handleChange} />
+              </div>
+              <div >
+                <div className='form-check form-switch'>
+                  <label className='form-check-label' for='flexSwitchCheckDefault'> wrap?</label>
+                  <input
+                    type='checkbox'
+                    checked={newMeasurement.wrap}
+                    onChange={e => setNewMeasurement((preValue) => { return { ...preValue, wrap: e.target.checked } })}
+                    className='form-check-input'
+                    role='switch'
+                    id='flexSwitchCheckDefault'
+                  />
+                </div>
+                <button type='submit' style={{width:"100%"}} className='btn btn-primary'>Add</button>
+              </div>
+            </form>
+          </div>
         </div>
-      ))}
-      <form className='forms' onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name of measurement </label>
-        <input placeholder='wall etc' type="text" name='name' onChange={handleChange} />
-        <br />
-        <label htmlFor='measurement'>Measurement </label>
-        <input step='0.0001' placeholder='151.5' type='number' name='measurement' onChange={handleChange} />
-        <label htmlFor='wrap'> wrap?</label>
-        <input
-          type='checkbox'
-          checked={newMeasurement.wrap}
-          onChange={e => setNewMeasurement((preValue) => { return { ...preValue, wrap: e.target.checked } })}
-          className='checkbox'
-        />
-        <button type='submit'>Add</button>
-      </form>
+      </div>
     </div>
   )
 };

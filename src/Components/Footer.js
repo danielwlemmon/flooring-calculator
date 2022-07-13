@@ -2,8 +2,10 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="footer">
-      <table>
+    <div className="fixed-bottom p-3 text-white-50">
+      <div className="fw-bold">Conversion Chart</div>
+      <table className="table text-white mt-1 text-white-50">
+       
         <tbody>
           <tr>
             <td>1/16</td>
