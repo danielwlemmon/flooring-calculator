@@ -17,7 +17,7 @@ function getLastWidth(m, plankDimensions) {
 
   //set background color depending on relevant thickness
   let bgColor = "rgb(42,134,107";
-  if((!m.wrap && lastWidth <= 1.75) || (wrapWidth <= 1.75 && m.wrap)) {
+  if ((!m.wrap && lastWidth <= 1.75) || (wrapWidth <= 1.75 && m.wrap)) {
     bgColor = "red"
   } else if ((!m.wrap && lastWidth <= 2.25) || (wrapWidth <= 2.25 && m.wrap)) {
     bgColor = "orange"
@@ -26,19 +26,23 @@ function getLastWidth(m, plankDimensions) {
   if (m.wrap) {
     return (
       <div
-      className="rounded text-center mt-1" 
-      style={{backgroundColor: bgColor}}
+        className="col-10 rounded text-center mt-1"
+        style={{ backgroundColor: bgColor }}
       >
-        <div className="">{m.measurement} units to {m.name}width of plank {wrapWidth} units or {wrapWidthPercent}% of a plank</div>
+        <div className="p-1">
+          {m.measurement} units to {m.name} width of plank {wrapWidth} units or {wrapWidthPercent}% of a plank
+        </div>
       </div>
     )
   } else {
     return (
       <div
-      className="rounded text-center mt-1"
-      style={{backgroundColor: bgColor}}
+        className="col-10 rounded text-center mt-1"
+        style={{ backgroundColor: bgColor }}
       >
-        <div>{m.measurement} units to {m.name} width of plank {lastWidth} units or {lastWidthPercent}% of a plank</div>
+        <div className="p-1">
+          {m.measurement} units to {m.name} width of plank {lastWidth} units or {lastWidthPercent}% of a plank
+        </div>
       </div>
     );
   }

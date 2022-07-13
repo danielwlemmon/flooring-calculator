@@ -20,7 +20,7 @@ const Measurements = ({ plankDimensions }) => {
     addMeasurements.push(newMeasurement);
     setMeasurements(addMeasurements);
     setRefresh(refresh + 1);
-    document.querySelector('.forms').reset();
+    document.querySelector('#m-form').reset();
   };
 
   const handleChange = (e) => {
@@ -30,19 +30,31 @@ const Measurements = ({ plankDimensions }) => {
     });
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const i = (e.target.name);
+    let itemRemoved = measurements;
+    itemRemoved.splice(i, 1);
+    setMeasurements(itemRemoved);
+    setRefresh(refresh + 1);
+  };
+
   return (
     <div>
       <div className='container'>
-        <div className='row'>
-          <div className='col-12 '>
-            {measurements.map((m, index) => (
-              <div key={index}>
-                {getLastWidth(m, plankDimensions)}
-              </div>
-            ))}
+
+
+        {measurements.map((m, index) => (
+          <div className='row align-items-center' key={index}>
+            {getLastWidth(m, plankDimensions)}
+            <div className='col-2'>
+              <button name={index} className='btn btn-danger' onClick={handleDelete} >Delete</button>
+            </div>
           </div>
+        ))}
+        <div className='row'>
           <div className='col-sm-12 col-md-6'>
-            <form onSubmit={handleSubmit}>
+            <form id='m-form' onSubmit={handleSubmit}>
               <div className=''>
                 <label className='for-label'>Name of measurement </label>
                 <input className='form-control' placeholder='wall etc' type="text" name='name' onChange={handleChange} />
@@ -53,7 +65,7 @@ const Measurements = ({ plankDimensions }) => {
               </div>
               <div >
                 <div className='form-check form-switch'>
-                  <label className='form-check-label' for='flexSwitchCheckDefault'> wrap?</label>
+                  <label className='form-check-label' htmlFor='flexSwitchCheckDefault'> wrap?</label>
                   <input
                     type='checkbox'
                     checked={newMeasurement.wrap}
@@ -63,7 +75,7 @@ const Measurements = ({ plankDimensions }) => {
                     id='flexSwitchCheckDefault'
                   />
                 </div>
-                <button type='submit' style={{width:"100%"}} className='btn btn-primary'>Add</button>
+                <button type='submit' style={{ width: "100%" }} className='btn btn-primary'>Add</button>
               </div>
             </form>
           </div>

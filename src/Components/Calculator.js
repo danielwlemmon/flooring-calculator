@@ -44,12 +44,12 @@ function Calculator() {
               placeholder="48.5 - longer side"
             />
 
-            <div className='row mt-2 pt-1 pb-2'>
-              <div className='col-sm-1 col-md-3'>
+            <div className='align-items-center row mt-2 pt-1 pb-2'>
+              <div className='col-1'>
                 <button type='button' className='btn btn-danger' onClick={decreaseStart}>-</button>
               </div>
-              <div className='col-sm-3 col-md-6'>{offset.toFixed(2)} units </div>
-              <div className='col-sm-1 col-md-3'>
+              <div className='col-3 ps-4 '>{offset.toFixed(2)} units </div>
+              <div className='col-1'>
                 <button type='button' className='btn btn-success' onClick={increaseStart}>+</button>
               </div>
             </div>
