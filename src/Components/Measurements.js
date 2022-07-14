@@ -6,7 +6,8 @@ const Measurements = ({ plankDimensions }) => {
   const [newMeasurement, setNewMeasurement] = useState({
     name: "",
     measurement: null,
-    wrap: false
+    wrap: false,
+    reverse: false
   });
   const [refresh, setRefresh] = useState(0);
 
@@ -48,7 +49,7 @@ const Measurements = ({ plankDimensions }) => {
           <div className='row align-items-center' key={index}>
             {getLastWidth(m, plankDimensions)}
             <div className='col-2'>
-              <button name={index} className='btn btn-danger' onClick={handleDelete} >Delete</button>
+              <button name={index} className='btn btn-secondary mt-1' onClick={handleDelete} >Delete</button>
             </div>
           </div>
         ))}
@@ -65,11 +66,22 @@ const Measurements = ({ plankDimensions }) => {
               </div>
               <div >
                 <div className='form-check form-switch'>
-                  <label className='form-check-label' htmlFor='flexSwitchCheckDefault'> wrap?</label>
+                  <label className='form-check-label' htmlFor='flexSwitchCheckDefault'> wrap</label>
                   <input
                     type='checkbox'
                     checked={newMeasurement.wrap}
                     onChange={e => setNewMeasurement((preValue) => { return { ...preValue, wrap: e.target.checked } })}
+                    className='form-check-input'
+                    role='switch'
+                    id='flexSwitchCheckDefault'
+                  />
+                </div>
+                <div className='form-check form-switch'>
+                  <label className='form-check-label' htmlFor='flexSwitchCheckDefault'> reverse direction</label>
+                  <input
+                    type='checkbox'
+                    checked={newMeasurement.reverse}
+                    onChange={e => setNewMeasurement((preValue) => { return { ...preValue, reverse: e.target.checked } })}
                     className='form-check-input'
                     role='switch'
                     id='flexSwitchCheckDefault'

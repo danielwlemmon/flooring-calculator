@@ -37,19 +37,19 @@ function Calculator() {
               name="width"
               placeholder="7.75 - shorter side"
             />
-            <label className='form-label' name="plankLength">Plank Length </label>
+            {/* <label className='form-label' name="plankLength">dist base wall to starting line </label>
             <input className='form-control' onChange={handleChange}
               type="number"
               name="length"
               placeholder="48.5 - longer side"
-            />
+            /> */}
 
-            <div className='align-items-center row mt-2 pt-1 pb-2'>
-              <div className='col-1'>
+            <div className='align-items-center row mt-2 '>
+              <div className='col-sm-1 align-content-around'>
                 <button type='button' className='btn btn-danger' onClick={decreaseStart}>-</button>
               </div>
-              <div className='col-3 ps-4 '>{offset.toFixed(2)} units </div>
-              <div className='col-1'>
+              <div className='col-sm-3 ps-4 '>{offset.toFixed(2)} units </div>
+              <div className='col-sm-1'>
                 <button type='button' className='btn btn-success' onClick={increaseStart}>+</button>
               </div>
             </div>
