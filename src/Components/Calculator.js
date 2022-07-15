@@ -10,12 +10,12 @@ function Calculator() {
 
   const increaseStart = () => {
     const offSetAdjust = offset;
-    setOffset(offSetAdjust + 0.25);
+    setOffset(offSetAdjust + 0.5);
   };
 
   const decreaseStart = () => {
     const offSetAdjust = offset;
-    setOffset(offSetAdjust - 0.25);
+    setOffset(offSetAdjust - 0.5);
   };
 
   const handleChange = (e) => {
@@ -43,8 +43,9 @@ function Calculator() {
               name="length"
               placeholder="48.5 - longer side"
             /> */}
-
+            
             <div className='align-items-center row mt-2 '>
+            <div>Starting row adjust</div>
               <div className='col-sm-1 align-content-around'>
                 <button type='button' className='btn btn-danger' onClick={decreaseStart}>-</button>
               </div>

@@ -18,7 +18,6 @@ function calcThickness(reverse, wrap, m, o, w) {
 
 
 function getLastWidth(mData, plankDimensions) {
-  console.log(mData)
   if (!mData || !plankDimensions) {
     return (
       <div>measurement Data error</div>
