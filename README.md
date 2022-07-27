@@ -1,3 +1,5 @@
+Link to live version: https://laminate-flooring-calculator.pages.dev/
+
 # Laminate flooring calculator
 
 The problem:
